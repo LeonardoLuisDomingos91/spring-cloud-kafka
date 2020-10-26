@@ -1,0 +1,15 @@
+{
+	"type": "record",
+	"name": "Greetings",
+	"namespace": "br.com.leo",
+	"fields": [
+	{
+		"name": "timestamp",
+		"type": "long"
+	},
+	{
+		"name": "message",
+		"type": "string"
+	}
+	]
+}

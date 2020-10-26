@@ -1,6 +1,5 @@
 package br.com.leo.controller;
 
-import br.com.leo.model.Greetings;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,10 +19,7 @@ public class GreetingsController {
     @GetMapping("/greetings")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void greetings(@RequestParam("message") String message) {
-        Greetings greetings = Greetings.builder()
-                .message(message)
-                .timestamp(System.currentTimeMillis())
-                .build();
-        greetingsService.sendGreeting(greetings);
+                long time = System.currentTimeMillis();
+        greetingsService.sendGreeting(message, time);
     }
 }

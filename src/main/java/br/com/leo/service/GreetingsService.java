@@ -1,7 +1,7 @@
 package br.com.leo.service;
 
+import br.com.leo.Greetings;
 import br.com.leo.channel.GreetingsStreams;
-import br.com.leo.model.Greetings;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHeaders;
@@ -20,8 +20,12 @@ public class GreetingsService {
         this.greetingsStreams = greetingsStreams;
     }
 
-    public void sendGreeting(final Greetings greetings) {
-        log.info("enviado {}", greetings);
+    public void sendGreeting(String message, long time) {
+        log.info("enviado {}", message);
+
+        Greetings greetings = new Greetings();
+        greetings.setMessage(message);
+        greetings.setTimestamp(time);
 
         MessageChannel messageChannel = greetingsStreams.outboundGreetings();
         messageChannel.send(MessageBuilder
